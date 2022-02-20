@@ -23,6 +23,7 @@
     border-top: none;
     background-color: #f8f9fa;
     position: relative;
+    user-select: none;
   }
 
   .row-data {
@@ -42,6 +43,7 @@
     border-top: none;
     border-left: none;
     position: relative;
+    user-select: none;
   }
 
   .cell{
