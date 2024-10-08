@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "normalize.css": "^8.0.1"
   }
 }
