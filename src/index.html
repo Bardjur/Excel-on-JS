@@ -4,15 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <div id="app" class="container">
-    <div class="excel">
-      <div class="excel__header"></div>
-      <div class="excel__toolbar"></div>
-      <div class="excel__formula"></div>
-      <div class="excel__table"></div>
+  <div id="app">
+    <div class="dashboard">
+      <div class="dashboard__header">
+        <h1>Excel</h1>
+      </div>
+
+      <div class="dashboard__new">
+        <div class="dashboard__view">
+          <a href="" class="dashboard__create">Нова таблиця</a>
+        </div>
+      </div>
+
+      <div class="dashboard__table dashboard__view">
+        <div class="dashboard__list-header">
+          <span>Назва</span>
+
+          <span>Дата відкриття</span>
+        </div>
+
+        <div class="dashboard__list">
+          <div class="dashboard__record">
+            <a href="">dsgsdgdfh</a>
+            <strong>12.06.2024</strong>
+          </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
 </body>
