@@ -12,7 +12,7 @@ module.exports = {
   },
   extends: ['eslint:recommended'],
   rules: {
-    'semi': 'off',
-    'require-jsdoc': 'off'
+    'require-jsdoc': 'off',
+    'no-debugger': 'off'
   },
 };
