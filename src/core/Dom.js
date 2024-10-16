@@ -22,7 +22,7 @@ class Dom {
     this.node.addEventListener(event, method);
   }
 
-  remove(event, method) {
+  off(event, method) {
     this.node.removeEventListener(event, method);
   }
 
