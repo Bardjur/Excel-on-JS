@@ -1,43 +1,67 @@
 class Dom {
   constructor(selector){
-    this.node = typeof selector === 'string'
+    this.$el = typeof selector === 'string'
     ? document.querySelector(selector)
-    : selector
+    : selector;
   }
 
   html(data) {
     if (typeof data === 'string') {
-      this.node.innerHTML = data;
-      return this
+      this.$el.innerHTML = data;
+      return this;
     }
-    return this.node.outerHTML
+    return this.$el.outerHTML;
   }
   
   clear() {
-    this.html('')
-    return this
+    this.html('');
+    return this;
   }
 
   on(event, method) {
-    this.node.addEventListener(event, method);
+    this.$el.addEventListener(event, method);
   }
 
   off(event, method) {
-    this.node.removeEventListener(event, method);
+    this.$el.removeEventListener(event, method);
   }
 
-  append(el) {
-    if (el instanceof Dom) {
-      el = el.node
+  append(node) {
+    if (node instanceof Dom) {
+      node = node.$el;
     }
     
     if(Element.prototype.append) {
-      this.node.append(el);
+      this.$el.append(node);
     } else {
-      this.node.appendChild(el);
+      this.$el.appendChild(node);
     }
     
-    return this
+    return this;
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  get data() {
+    return this.$el.dataset;
+  }
+
+  css(styles = {}) {
+    const keys = Object.keys(styles);
+
+    keys.forEach(key => {
+      this.$el.style[key] = styles[key];
+    });
   }
 }
 

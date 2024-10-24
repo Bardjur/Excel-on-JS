@@ -9,12 +9,12 @@ export function createTable(rowsCount = 15) {
 
   const cols = Array(colsCount)
     .fill('')
-    .map( (_, idx) => createCol(toChar(idx)))
+    .map( (_, idx) => createCol(toChar(idx), idx + 1))
     .join('');
 
   const cell = Array(colsCount)
     .fill('')
-    .map( () => createCel())
+    .map( (_, idx) => createCel(idx + 1))
     .join('');
 
 
@@ -30,23 +30,34 @@ export function createTable(rowsCount = 15) {
 
 function createRow(number = '', content ) {
   return `
-    <div class="row">
-      <div class="row-info">${number}</div>
+    <div class="row" ${number ? 'data-type="resizable"' : ''}>
+      <div class="row-info">
+        ${number}
+        ${number 
+          ? '<div class="row-resize" data-resize="row"></div>' 
+          : ''
+        }
+      </div>
 
       <div class="row-data">${content}</div>
     </div>
   `;
 }
 
-function createCol(char) {
+function createCol(char, colNum) {
   return `
-    <div class="column">${char}</div>
+    <div class="column" data-type="resizable" data-col_num="${colNum}">
+      ${char}
+
+      <div class="col-resize" data-resize="col"></div>
+    </div>
   `;
 }
 
-function createCel() {
+function createCel(celNum) {
   return `
-    <div class="cell" contenteditable></div>
+    <div class="cell" contenteditable data-col_num="${celNum}">
+    </div>
   `;
 }
 
