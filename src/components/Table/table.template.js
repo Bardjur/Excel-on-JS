@@ -12,16 +12,19 @@ export function createTable(rowsCount = 15) {
     .map( (_, idx) => createCol(toChar(idx), idx + 1))
     .join('');
 
-  const cell = Array(colsCount)
-    .fill('')
-    .map( (_, idx) => createCel(idx + 1))
-    .join('');
+  
 
 
   rows.push(createRow('', cols));
 
-  for (let i = 0; i < rowsCount; i++) {
-    rows.push(createRow(i+1, cell ));
+  for (let row = 0; row < rowsCount; row++) {
+    const cells = Array(colsCount)
+    .fill('')
+    //.map( (_, col) => createCel(row+1, col + 1))
+    .map(createCel(row))
+    .join('');
+
+    rows.push(createRow(row+1, cells ));
   }
 
   return rows.join('');
@@ -54,11 +57,17 @@ function createCol(char, colNum) {
   `;
 }
 
-function createCel(celNum) {
-  return `
-    <div class="cell" contenteditable data-col_num="${celNum}">
-    </div>
-  `;
+function createCel(row) {
+  return function(_, col){
+    return `
+      <div class="cell" 
+        contenteditable 
+        data-col_num="${col+1}"
+        data-id="${row+1}:${col+1}"
+        data-type="cell"
+      ></div>
+    `;
+  }
 }
 
 function toChar(number) {
